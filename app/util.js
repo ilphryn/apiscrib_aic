@@ -1,3 +1,5 @@
+let moment = require('moment');
+ 
  // Define Error Codes
  let statusCode = {
      OK: 200,
@@ -16,4 +18,13 @@
      DATA_ADDED: 'Enregistrement effectué'
  };
 
- module.exports = statusMessage
+function dateToDDMMYYHHmm(value) {
+    const date = moment(value).format('DD/MM/YYYY HH:mm');
+    return date;
+}
+
+ module.exports = {
+    statusCode : statusCode, 
+    statusMessage : statusMessage,
+    dateToDDMMYYHHmm : dateToDDMMYYHHmm
+ }

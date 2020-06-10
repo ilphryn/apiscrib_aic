@@ -7,11 +7,12 @@ const ldapjs = require('ldapjs')
 const logger = require('../winston.js');
 const db = require('../db');
  
+/*
+
 //PARAMETRES LDAP
 const host = '192.168.224.76';
 const dn = 'DC=ocitnetad,DC=ci';
 const domaine = 'ocitnetad.ci'
-
 const client = ldapjs.createClient({ url: `ldap://${host}:389`,reconnect: true });
 
 
@@ -20,6 +21,7 @@ const client = ldapjs.createClient({ url: `ldap://${host}:389`,reconnect: true }
 // 2 : inactive
 
 //AUTHENTIFICATION BY AD
+
 
 function authenticate({login, password}) {
 
@@ -46,6 +48,7 @@ function authenticate({login, password}) {
         //
         authAD
             .then((identity) => {
+
                 sql.query("SELECT * FROM users", function (err, res) {
                     if (err) {
                         logger.error(err);
@@ -78,6 +81,7 @@ function authenticate({login, password}) {
                         // result(userInfo);
                     }
                 })
+
             })
              .catch((err) => {
                  logger.warn(`user [${login}] connection failed`)
@@ -85,7 +89,22 @@ function authenticate({login, password}) {
              })
     });
     return userCheck
-
 }
+
+*/
+
+// For test **********************
+function authenticate({login, password}) {
+    return new Promise((resolve, reject) => {
+
+        const token = jwt.sign({ sub: 'emmanuel.koffi' }, config.secret, { expiresIn: '4h' });
+        const userInfo = { name:'Emmanuel KOFFI',login:'emmanuel.koffi', groupware:'admin',token }
+        var userCheck = { authCode : 1, userInfo }
+        resolve(userCheck)
+    })
+};
+// For test **********************
+
+
 
 module.exports = { authenticate };

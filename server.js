@@ -40,6 +40,7 @@ routes(app); //register the route
    });
 
 
+
 app.listen(port, hostname, () => {
     logger.info(`Node Server running on ${process.env.NODE_ENV || 'Dev'}_Mode at http://${hostname}:${port}/`);
 });

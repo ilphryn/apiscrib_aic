@@ -3,7 +3,7 @@ let sql = require('../db');
 let msg = require('../util');
 let query = require('../query');
 const logger = require('../winston.js');
-
+const utilities = require('../util');
 
 let Plainte = function(plainte) {
     this.agent = plainte.agent;
@@ -28,7 +28,7 @@ let Plainte = function(plainte) {
     this.observation = plainte.observation;
     this.oceane = plainte.oceane;
     this.idOrigine = plainte.idOrigine;
-    this.partenaire = plainte.partenaire;
+    this.idPartenaire = plainte.idPartenaire;
     this.idPorteur = plainte.idPorteur;
     this.priorite = plainte.priorite;
     this.quartier = plainte.quartier;

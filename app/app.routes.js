@@ -10,6 +10,7 @@ module.exports = function(app) {
         Plainte = require('./controllers/plainteCtrl.js'),
         Porteur = require('./controllers/porteurCtrl.js'),
         Suborigine = require('./controllers/suborigineCtrl.js'),
+        Partenaire = require('./controllers/partenaireCtrl'),
         Authentification = require('./auth/auth.controller.js')
 
     // Canal routes
@@ -21,6 +22,17 @@ module.exports = function(app) {
         .get(Canal.getById)
         .put(Canal.update)
         .delete(Canal.delete);
+
+    // Partenaire routes
+    app.route('/partenaire')
+        .get(Partenaire.getAll)
+        .post(Partenaire.create);
+
+    app.route('/partenaire/:partenaireId')
+        .get(Partenaire.getById)
+        .put(Partenaire.update)
+        .delete(Partenaire.delete);
+
 
     // Description routes
     app.route('/description')
